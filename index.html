@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ɭย๓เภ๏ยร | Group Portfolio</title>
+    
+    <!-- Google Fonts untuk tampilan modern dan bersih -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-color: #0a0a0a;       /* Hitam sangat lembut (bukan hitam pekat) */
+            --card-bg: #141414;        /* Abu gelap untuk kartu */
+            --text-main: #ffffff;      /* Putih bersih */
+            --text-muted: #888888;     /* Abu-abu untuk teks sekunder */
+            --border-color: #333333;   /* Garis batas halus */
+            --hover-bg: #1f1f1f;       /* Efek hover */
+            --accent: #ffffff;         /* Aksen warna putih */
+            
+            --font-main: 'Outfit', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+            /* Background halus agar tidak terlalu flat */
+            background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #0a0a0a 70%);
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* --- HEADER --- */
+        header {
+            margin-bottom: 3rem;
+        }
+
+        .brand-name {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: lowercase; /* Gaya estetik */
+        }
+
+        .tagline {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* --- LINK SECTION / CARDS --- */
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .card {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            border-radius: 16px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            background-color: var(--card-bg);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-content {
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .icon-box {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .card:hover .icon-box {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        .text-group h3 {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+
+        .text-group p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .arrow-icon {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: var(--transition);
+        }
+
+        .card:hover .arrow-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Specific Colors for Icons (Subtle hint on hover or normal) */
+        .fa-discord:hover { color: #5865F2; }
+        .fa-whatsapp:hover { color: #25D366; }
+        .fa-telegram:hover { color: #0088cc; }
+
+        /* --- SUB-LINKS (Untuk link ganda dalam satu kategori) --- */
+        .sub-card {
+            border-left: 2px solid var(--border-color);
+            padding-left: 1.5rem;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sub-card .icon-box {
+            width: 30px;
+            height: 30px;
+            font-size: 0.9rem;
+            background-color: transparent;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-muted);
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--text-main);
+            border-bottom: 1px dotted var(--text-main);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsiveness for Mobile */
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 2.5rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <!-- Nama Group -->
+            <h1 class="brand-name">ɭย๓เภ๏ยร</h1>
+            <p class="tagline">Community Hub</p>
+        </header>
+
+        <section class="link-group">
+            
+            <!-- Discord -->
+            <a href="https://discord.gg/Swrq6Nk4V" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-discord"></i>
+                    </div>
+                    <div class="text-group">
+                        <h3>Discord Server</h3>
+                        <p>Bergabung dengan komunitas kami</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- WhatsApp Group -->
+            <a href="https://chat.whatsapp.com/CXRKqExCxFtEJGrMoqGv9a" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div class="text-group">
+                        <h3>WhatsApp Group</h3>
+                        <p>Diskusi &amp; Sosialisasi</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- WhatsApp Channel -->
+            <a href="https://whatsapp.com/channel/0029VbBEP3i8KMqepX3x1V2F" target="_blank" class="card sub-card">
+                <div class="card-content">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="text-group">
+                        <h3>WhatsApp Channel</h3>
+                        <p>Update informasi terbaru</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon" style="font-size: 0.8rem;"></i>
+            </a>
+
+            <!-- Telegram Group -->
+            <a href="https://t.me/+tOUL9psCu_9kNzhl" target="_blank" class="card">
+                <div class="card-content">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
+                    <div class="text-group">
+                        <h3>Telegram Group</h3>
+                        <p>Grup Resmi</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- Telegram Channels -->
+            <!-- Channel 1 -->
+            <a href="https://t.me/ujayysch" target="_blank" class="card sub-card">
+                <div class="card-content">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="text-group">
+                        <h3>Channel: Ujayysch</h3>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon" style="font-size: 0.8rem;"></i>
+            </a>
+            
+            <!-- Channel 2 -->
+            <a href="https://t.me/luminosxv3" target="_blank" class="card sub-card">
+                <div class="card-content">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="text-group">
+                        <h3>Channel: Luminos Xv3</h3>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon" style="font-size: 0.8rem;"></i>
+            </a>
+
+        </section>
+
+        <footer>
+            <p>© 2023 ɭย๓เภ๏ยร Group. All rights reserved.</p>
+            <p style="margin-top: 5px;">Design By : Ujayy<span style="color: #fff;" class=""></span></p>
+        </footer>
+    </main>
+
+
+</body></html>
